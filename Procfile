@@ -1,0 +1,1 @@
+web: java -jar target/grandld.com-server-1.0-SNAPSHOT-jar-with-dependencies.jar

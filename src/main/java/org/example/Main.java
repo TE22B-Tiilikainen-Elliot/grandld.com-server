@@ -21,13 +21,17 @@ public class Main {
 
     public static void main(String[] args) {
         try {
+            // Get the PORT environment variable, default to 8080 if not set
+            String port = System.getenv("PORT");
+            int serverPort = (port != null) ? Integer.parseInt(port) : 8080;
+
             // Load the saved click count from the file on server start
             int savedCount = loadCountFromFile();
             buttonClickCounter.set(savedCount);
 
-            // Create an HTTP server that listens on port 8080
-            HttpServer server = HttpServer.create(new InetSocketAddress(8080), 0);
-            System.out.println("Web server is listening on port 8080");
+            // Create an HTTP server that listens on the specified port
+            HttpServer server = HttpServer.create(new InetSocketAddress(serverPort), 0);
+            System.out.println("Web server is listening on port " + serverPort);
 
             // Create a context for serving the main page (index.html)
             server.createContext("/", new MyHttpHandler());

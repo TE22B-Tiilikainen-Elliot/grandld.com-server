@@ -1,0 +1,3 @@
+[build]
+builder = "java"
+run = ["mvn clean package"]
